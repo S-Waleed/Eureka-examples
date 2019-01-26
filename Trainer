@@ -1,0 +1,69 @@
+//
+//  Trainer.swift
+//
+//  Created by Waleed on 1/16/19.
+//  Copyright © 2019 Waleed Sarwari. All rights reserved.
+//
+
+import Foundation
+
+struct Trainer {
+    
+    var userId: String
+    var location: String
+    var points: Int?
+    var school: String?
+    var bio: String?
+    var certifications: String?
+    var sports: Array<String>
+    var ageRange: Array<String>
+    var skillAreas: Array<String>
+    var trainingSize: Array<String>
+    var travelDistance: Int = 5
+    
+    // MARK: - Firebase Keys
+    
+    enum UserInfoKey {
+        static let location = "location"
+        static let points = "points"
+        static let school = "school"
+        static let bio = "bio"
+        static let certifications = "certifications"
+        static let sports = "sports"
+        static let ageRange = "ageRange"
+        static let skillAreas = "skillAreas"
+        static let trainingSize = "trainingSize"
+        static let travelDistance = "travelDistance"
+    }
+    
+    
+    init(userId: String, location: String, points: Int, school: String, bio: String, certifications: String, sports: Array<String>, ageRange: Array<String>, skillAreas: Array<String>, trainingSize: Array<String>, travelDistance: Int) {
+        
+        self.userId = userId
+        self.location = location
+        self.points = points
+        self.school = school
+        self.bio = bio
+        self.certifications = certifications
+        self.sports = sports
+        self.ageRange = ageRange
+        self.skillAreas = skillAreas
+        self.trainingSize = trainingSize
+        self.travelDistance = travelDistance
+    }
+    
+    init?(userId: String, userInfo: [String: Any]) {
+        let location = userInfo[UserInfoKey.location] as? String ?? ""
+        let points = userInfo[UserInfoKey.points] as? Int ?? 0
+        let school = userInfo[UserInfoKey.school] as? String ?? ""
+        let bio = userInfo[UserInfoKey.bio] as? String ?? ""
+        let certs = userInfo[UserInfoKey.certifications] as? String ?? ""
+        let sports = userInfo[UserInfoKey.sports] as? Array<String> ?? [""]
+        let ageRange = userInfo[UserInfoKey.ageRange] as? Array<String> ?? [""]
+        let skillAreas = userInfo[UserInfoKey.skillAreas] as? Array<String> ?? [""]
+        let trainingSize = userInfo[UserInfoKey.trainingSize] as? Array<String> ?? [""]
+        let distance = userInfo[UserInfoKey.travelDistance] as? Int ?? 5
+        
+        self = Trainer(userId: userId, location: location, points: points, school: school, bio: bio, certifications: certs, sports: sports, ageRange: ageRange, skillAreas: skillAreas, trainingSize: trainingSize, travelDistance: distance)
+    }
+}
