@@ -5,6 +5,10 @@
 //  Copyright © 2019 Waleed Sarwari. All rights reserved.
 //
 
+// USE AS IS
+// THIS SAVE DICTIONARY VALUES TO GOOGLE FIREBASE DATABASE. 
+// THIS ASSUMES ALL THE GOOGLE DATABASE SETUP IS ALREADY DONE. 
+
 import Foundation
 
 final class TrainerServices {
